@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Lima 25 Jun — Tu Guía</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9952A;
+    --gold-light: #F5E4B8;
+    --gold-pale: #FDF8EE;
+    --dark: #1A1208;
+    --mid: #3D2E0E;
+    --text: #2C2010;
+    --muted: #7A6040;
+    --surface: #FFFDF7;
+    --white: #FFFFFF;
+    --green: #2A6B3C;
+    --green-bg: #EAF5EF;
+    --blue: #1B4F8A;
+    --blue-bg: #E8F0FB;
+    --red: #8B1A1A;
+    --red-bg: #FBEAEA;
+    --orange: #7A3D00;
+    --orange-bg: #FEF0E0;
+  }
+
+  html, body {
+    font-family: 'DM Sans', sans-serif;
+    background: #F5EDD8;
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HERO HEADER ─── */
+  .hero {
+    background: var(--dark);
+    color: var(--white);
+    padding: 28px 20px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,149,42,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .hero-title span { color: var(--gold); }
+  .hero-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .hero-pin {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+    background: rgba(201,149,42,0.15);
+    border: 1px solid rgba(201,149,42,0.3);
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+  .hero-pin-icon { font-size: 16px; }
+  .hero-pin-text { font-size: 12px; color: var(--gold-light); font-weight: 500; }
+
+  /* ─── TABS NAV ─── */
+  .tabs-nav {
+    display: flex;
+    gap: 0;
+    background: var(--dark);
+    border-top: 1px solid rgba(201,149,42,0.2);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tabs-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex: 0 0 auto;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.45);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .tab-btn:hover:not(.active) { color: rgba(255,255,255,0.75); }
+
+  /* ─── CONTENT AREA ─── */
+  .content { padding: 0 0 80px; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px 10px;
+  }
+  .section-label-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(201,149,42,0.3);
+  }
+  .section-label-text {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ─── TIMELINE (TAB 1) ─── */
+  .timeline { padding: 0 16px; }
+  .tl-item {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 14px;
+    position: relative;
+  }
+  .tl-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 52px;
+    flex-shrink: 0;
+  }
+  .tl-time {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .tl-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin: 6px 0;
+    flex-shrink: 0;
+  }
+  .tl-line {
+    width: 2px;
+    flex: 1;
+    background: rgba(201,149,42,0.25);
+    min-height: 20px;
+  }
+  .tl-card {
+    flex: 1;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 0;
+    border: 1px solid rgba(201,149,42,0.15);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .tl-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .tl-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .tl-badge {
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: var(--gold-light);
+    color: var(--mid);
+  }
+  .tl-badge.free { background: var(--green-bg); color: var(--green); }
+  .tl-badge.food { background: var(--orange-bg); color: var(--orange); }
+  .tl-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+  .tl-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tl-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #F3EDE0;
+    color: var(--muted);
+  }
+  .tl-tag.walk { background: var(--green-bg); color: var(--green); }
+  .tl-tag.taxi { background: var(--blue-bg); color: var(--blue); }
+  .tl-tag.entry { background: var(--gold-pale); color: var(--mid); }
+  .tl-tag.tip { background: #FFF3F3; color: var(--red); }
+
+  /* ─── OPTION CARDS (TABS 2-4) ─── */
+  .option-hero {
+    background: var(--dark);
+    padding: 24px 20px 20px;
+    position: relative;
+  }
+  .option-badge-top {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .option-badge-top.culture { background: rgba(201,149,42,0.2); color: var(--gold); }
+  .option-badge-top.food { background: rgba(201,149,42,0.2); color: var(--gold); }
+  .option-badge-top.nature { background: rgba(60,120,60,0.3); color: #7FD99F; }
+  .option-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .option-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 16px 16px 6px;
+  }
+  .info-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 12px 14px;
+    border: 1px solid rgba(201,149,42,0.12);
+  }
+  .info-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .info-card-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .info-card-value.green { color: var(--green); }
+  .info-card-value.gold { color: var(--gold); }
+
+  .places-list { padding: 6px 16px 16px; }
+  .place-item {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(201,149,42,0.12);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .place-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .place-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .place-type {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .place-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .place-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .ptag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 9px;
+    border-radius: 6px;
+  }
+  .ptag.walk { background: var(--green-bg); color: var(--green); }
+  .ptag.taxi { background: var(--blue-bg); color: var(--blue); }
+  .ptag.price { background: var(--gold-pale); color: var(--mid); }
+  .ptag.free { background: var(--green-bg); color: var(--green); }
+  .ptag.time { background: #F0EBF8; color: #5B3A8B; }
+  .ptag.tip { background: #FFF0F0; color: var(--red); }
+
+  /* ─── TIPS BOX ─── */
+  .tips-box {
+    margin: 0 16px 16px;
+    background: var(--gold-pale);
+    border: 1px solid rgba(201,149,42,0.3);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .tips-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .tip-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 7px;
+    align-items: flex-start;
+  }
+  .tip-icon { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .tip-text { font-size: 13px; color: var(--text); line-height: 1.5; }
+
+  /* ─── COST SUMMARY ─── */
+  .cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(201,149,42,0.1);
+  }
+  .cost-row:last-child { border-bottom: none; }
+  .cost-name { font-size: 13px; color: var(--muted); }
+  .cost-val { font-size: 14px; font-weight: 600; color: var(--dark); }
+  .cost-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0 0;
+    margin-top: 4px;
+    border-top: 2px solid var(--gold);
+  }
+  .cost-total-label { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .cost-total-val { font-size: 18px; font-weight: 700; color: var(--gold); }
+
+  .maps-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: calc(100% - 32px);
+    margin: 0 16px 8px;
+    padding: 14px;
+    background: var(--dark);
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+  .maps-btn:active { opacity: 0.85; }
+
+  .divider { height: 8px; background: #EDE3CC; }
+
+  /* ─── BOTTOM SAFE AREA ─── */
+  .bottom-space { height: 30px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-date">Jueves 25 de Junio · 2026</div>
+  <div class="hero-title">Tu día en<br><span>Lima</span></div>
+  <div class="hero-sub">4 planes distintos para mañana. Elige el tuyo.</div>
+  <div class="hero-pin">
+    <span class="hero-pin-icon">📍</span>
+    <span class="hero-pin-text">Estelar Apartamentos Bellavista · Calle Bellavista 216, Miraflores</span>
+  </div>
+</div>
+
+<!-- TABS NAV -->
+<div class="tabs-nav">
+  <button class="tab-btn active" onclick="showTab('t1')">🗓️ Plan Completo</button>
+  <button class="tab-btn" onclick="showTab('t2')">🎨 Barranco Bohemio</button>
+  <button class="tab-btn" onclick="showTab('t3')">🍽️ Ruta Gastronómica</button>
+  <button class="tab-btn" onclick="showTab('t4')">🌊 Costa Verde</button>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TAB 1 — PLAN COMPLETO -->
+<!-- ════════════════════════════════════════ -->
+<div class="tab-panel active" id="t1">
+  <div class="content">
+
+    <div class="section-label">
+      <div class="section-label-line"></div>
+      <div class="section-label-text">Itinerario del día</div>
+      <div class="section-label-line"></div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- 7:30 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">7:30<br>AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Desayuno</div>
+            <div class="tl-badge free">En hotel</div>
+          </div>
+          <div class="tl-desc">Desayuna en el restaurante Terraza 216 del hotel antes de salir. Carga energías porque el día es largo y muy movido.</div>
+          <div class="tl-meta">
+            <span class="tl-tag walk">🏨 En el hotel</span>
+            <span class="tl-tag entry">~30 min</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9:00 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">9:00<br>AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Huaca Pucllana</div>
+            <div class="tl-badge">S/ 15</div>
+          </div>
+          <div class="tl-desc">Pirámide de adobe de 1,600 años en pleno Miraflores. Una de las experiencias más impactantes de Lima: ruinas preincas rodeadas de edificios modernos. Tour guiado incluido (en español e inglés, ~1 hora).</div>
+          <div class="tl-meta">
+            <span class="tl-tag walk">🚶 15 min a pie</span>
+            <span class="tl-tag entry">Entrada S/15</span>
+            <span class="tl-tag tip">🕙 Cierra martes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11:00 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">11:00<br>AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Parque Kennedy</div>
+            <div class="tl-badge free">Gratis</div>
+          </div>
+          <div class="tl-desc">El corazón de Miraflores, conocido por los gatos que viven aquí. Café con mazamorra morada o picarones en los puestos del parque. A 4 minutos caminando de tu hotel.</div>
+          <div class="tl-meta">
+            <span class="tl-tag walk">🚶 4 min a pie</span>
+            <span class="tl-tag free">Entrada gratis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11:30 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">11:30<br>AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Malecón + Parque del Amor</div>
+            <div class="tl-badge free">Gratis</div>
+          </div>
+          <div class="tl-desc">Paseo sobre los acantilados con vista al Océano Pacífico. El Parque del Amor tiene la escultura "El Beso" y es perfecto para fotos. También está el Faro de Miraflores.</div>
+          <div class="tl-meta">
+            <span class="tl-tag walk">🚶 18 min a pie</span>
+            <span class="tl-tag free">Entrada gratis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12:30 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">12:30<br>PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Almuerzo en Larcomar</div>
+            <div class="tl-badge food">Comida</div>
+          </div>
+          <div class="tl-desc">Centro comercial construido sobre el acantilado con vista al Pacífico. Pide ceviche o lomo saltado aquí — estás en Lima, ¡es obligatorio! Presupuesto S/40–80 por persona.</div>
+          <div class="tl-meta">
+            <span class="tl-tag walk">🚶 18 min a pie</span>
+            <span class="tl-tag entry">S/40–80 almuerzo</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2:30 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">2:30<br>PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Museo Larco</div>
+            <div class="tl-badge">S/ 50</div>
+          </div>
+          <div class="tl-desc">Uno de los mejores museos de América Latina. Colección de arte precolombino en una antigua hacienda rodeada de jardines con buganvilias. Famoso por su sala de cerámica erótica.</div>
+          <div class="tl-meta">
+            <span class="tl-tag taxi">🚕 Uber ~15 min / S/15</span>
+            <span class="tl-tag entry">Entrada S/50</span>
+            <span class="tl-tag entry">Abierto 9am–7pm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4:30 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">4:30<br>PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Barranco</div>
+            <div class="tl-badge free">Gratis</div>
+          </div>
+          <div class="tl-desc">Barrio bohemio con murales, galerías y casas coloniales. Cruza el Puente de los Suspiros aguantando la respiración y pide un deseo. Baja por la Bajada de Baños hasta el malecón.</div>
+          <div class="tl-meta">
+            <span class="tl-tag taxi">🚕 Uber ~20 min / S/15</span>
+            <span class="tl-tag free">Entrada gratis</span>
+            <span class="tl-tag tip">Mejor al atardecer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6:30 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">6:30<br>PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Plaza de Armas + San Francisco</div>
+            <div class="tl-badge">S/ 15</div>
+          </div>
+          <div class="tl-desc">Centro histórico de Lima. Catedral, Palacio de Gobierno y los famosos balcones coloniales. El Monasterio de San Francisco con sus catacumbas está a 3 min caminando de la plaza.</div>
+          <div class="tl-meta">
+            <span class="tl-tag taxi">🚕 Uber ~20 min / S/15</span>
+            <span class="tl-tag entry">Catacumbas S/15</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7:30 -->
+      <div class="tl-item">
+        <div class="tl-left">
+          <div class="tl-time">7:30<br>PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-line" style="background:transparent;"></div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">Circuito Mágico del Agua</div>
+            <div class="tl-badge">S/ 5</div>
+          </div>
+          <div class="tl-desc">¡El cierre perfecto! Record Guinness: el complejo de fuentes musicales más grande del mundo. Espectáculo de luces y láser a las 8:30 PM. Abierto hasta las 10 PM.</div>
+          <div class="tl-meta">
+            <span class="tl-tag taxi">🚕 Uber ~15 min / S/12</span>
+            <span class="tl-tag entry">Entrada S/5</span>
+            <span class="tl-tag tip">🌟 Show a las 8:30pm</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
+
+    <div class="divider"></div>
+
+    <!-- COSTO RESUMEN -->
+    <div class="section-label">
+      <div class="section-label-line"></div>
+      <div class="section-label-text">Resumen de costos</div>
+      <div class="section-label-line"></div>
+    </div>
+    <div class="tips-box" style="padding:16px;">
+      <div class="cost-row"><span class="cost-name">🏛️ Huaca Pucllana</span><span class="cost-val">S/ 15</span></div>
+      <div class="cost-row"><span class="cost-name">🍽️ Almuerzo Larcomar</span><span class="cost-val">S/ 50–80</span></div>
+      <div class="cost-row"><span class="cost-name">🏺 Museo Larco</span><span class="cost-val">S/ 50</span></div>
+      <div class="cost-row"><span class="cost-name">⛲ Circuito del Agua</span><span class="cost-val">S/ 5</span></div>
+      <div class="cost-row"><span class="cost-name">🚕 Ubers estimados</span><span class="cost-val">S/ 60–80</span></div>
+      <div class="cost-total">
+        <span class="cost-total-label">TOTAL APROX.</span>
+        <span class="cost-total-val">S/ 180–230</span>
+      </div>
+    </div>
+
+    <!-- TIPS -->
+    <div class="tips-box" style="margin-top:0;">
+      <div class="tips-title">💡 Tips para el día</div>
+      <div class="tip-row"><span class="tip-icon">📱</span><span class="tip-text">Usa <strong>Uber o InDriver</strong> — son seguros y rastrean la ruta. Evita taxis sin app.</span></div>
+      <div class="tip-row"><span class="tip-icon">🧥</span><span class="tip-text">Junio es garúa en Lima (~16°C). Lleva una chaqueta ligera.</span></div>
+      <div class="tip-row"><span class="tip-icon">💳</span><span class="tip-text">La mayoría de lugares aceptan tarjeta. Ten S/50 en efectivo por si acaso.</span></div>
+      <div class="tip-row"><span class="tip-icon">📷</span><span class="tip-text">Mejor hora para fotos en el Malecón: ~12pm con luz difusa de garúa.</span></div>
+    </div>
+
+    <div class="bottom-space"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TAB 2 — BARRANCO BOHEMIO -->
+<!-- ════════════════════════════════════════ -->
+<div class="tab-panel" id="t2">
+  <div class="option-hero">
+    <div class="option-badge-top culture">Arte & Cultura</div>
+    <div class="option-title">Día Bohemio<br>en Barranco</div>
+    <div class="option-subtitle">El barrio más artístico de Lima a fondo — murales, galerias, café, historia y atardecer sobre el Pacífico.</div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-card-label">💰 Costo total</div>
+      <div class="info-card-value gold">S/ 80–130</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">⏱️ Duración</div>
+      <div class="info-card-value">Todo el día</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">🚕 Desde hotel</div>
+      <div class="info-card-value">Uber ~15 min</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">🎯 Para quién</div>
+      <div class="info-card-value">Arte y cultura</div>
+    </div>
+  </div>
+
+  <div class="section-label">
+    <div class="section-label-line"></div>
+    <div class="section-label-text">Qué visitar</div>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="places-list">
+
+    <div class="place-item">
+      <div class="place-num">1</div>
+      <div class="place-name">Puente de los Suspiros</div>
+      <div class="place-type">Ícono histórico</div>
+      <div class="place-desc">El símbolo más famoso de Barranco. La tradición dice que si cruzas aguantando la respiración y pides un deseo, se cumple. Rodeado de tiendas de arte, murales callejeros y casonas del siglo XIX. Desde aquí baja por la Bajada de Baños hasta el malecón costero.</div>
+      <div class="place-tags">
+        <span class="ptag taxi">🚕 Uber ~15 min S/15</span>
+        <span class="ptag free">Entrada gratis</span>
+        <span class="ptag time">⏱ 30–45 min</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">2</div>
+      <div class="place-name">MAC — Museo de Arte Contemporáneo</div>
+      <div class="place-type">Museo moderno</div>
+      <div class="place-desc">El museo de arte contemporáneo más importante del Perú, ubicado en Barranco. Exposiciones rotativas de artistas peruanos y latinoamericanos. Edificio moderno con jardines exteriores perfectos para fotos. Abierto martes a domingo, 10am–6pm.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 5 min del Puente</span>
+        <span class="ptag price">Entrada S/20–30</span>
+        <span class="ptag time">⏱ 1 hora</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">3</div>
+      <div class="place-name">Museo Pedro de Osma</div>
+      <div class="place-type">Arte virreinal</div>
+      <div class="place-desc">En una espectacular mansión del siglo XIX en pleno Barranco. Alberga la colección de arte virreinal más importante del Perú: pinturas, esculturas, platería y textiles de la época colonial. El edificio mismo es una obra de arte. Ambiente íntimo y selecto.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 8 min del Puente</span>
+        <span class="ptag price">Entrada S/20</span>
+        <span class="ptag time">⏱ 45 min</span>
+        <span class="ptag tip">Mar–Dom 10am–6pm</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">4</div>
+      <div class="place-name">Bajada de Baños + Malecón Barranco</div>
+      <div class="place-type">Paseo costero</div>
+      <div class="place-desc">Baja por la peatonal Bajada de Baños hasta el malecón de Barranco. Vista directa al Pacífico, cafés con terraza, arte urbano en cada pared. Al atardecer (~6pm) el cielo se tiñe de tonos naranjas sobre el mar. Es una de las mejores experiencias gratuitas de Lima.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 Bajando del Puente</span>
+        <span class="ptag free">Entrada gratis</span>
+        <span class="ptag tip">🌅 Ir a las 5:30pm</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">5</div>
+      <div class="place-name">Cena en Barranco</div>
+      <div class="place-type">Gastronomía</div>
+      <div class="place-desc">Barranco tiene una oferta gastronómica increíble. Recomendados: Isolina (comida criolla auténtica), Amor Amar (vista al mar), o los bares de la Plaza Municipal para terminar la noche con pisco sour escuchando música en vivo.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 Todo a pie en Barranco</span>
+        <span class="ptag price">Cena S/50–100</span>
+        <span class="ptag tip">Reserva con anticipación</span>
+      </div>
+    </div>
+
+  </div>
+
+  <a class="maps-btn" href="https://maps.google.com/?q=Barranco,Lima,Peru" target="_blank">
+    📍 Ver Barranco en Google Maps
+  </a>
+
+  <div class="tips-box">
+    <div class="tips-title">💡 Tips Barranco</div>
+    <div class="tip-row"><span class="tip-icon">🎨</span><span class="tip-text">Sigue el hashtag #BarrancoLima en Instagram para ver los mejores murales activos.</span></div>
+    <div class="tip-row"><span class="tip-icon">⏰</span><span class="tip-text">Llega a las 10am para los museos y quédate para el atardecer (~6pm) en el malecón.</span></div>
+    <div class="tip-row"><span class="tip-icon">🚶</span><span class="tip-text">Todo Barranco se recorre a pie. Usa zapatos cómodos.</span></div>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TAB 3 — RUTA GASTRONÓMICA -->
+<!-- ════════════════════════════════════════ -->
+<div class="tab-panel" id="t3">
+  <div class="option-hero">
+    <div class="option-badge-top food">Gastronomía</div>
+    <div class="option-title">Ruta del<br>Sabor Limeño</div>
+    <div class="option-subtitle">Lima es la capital gastronómica de Latinoamérica. Este plan es para comer de lo mejor sin parar.</div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-card-label">💰 Costo total</div>
+      <div class="info-card-value gold">S/ 120–250</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">⏱️ Duración</div>
+      <div class="info-card-value">10am – 9pm</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">🚶 Desde hotel</div>
+      <div class="info-card-value">Todo cerca</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">🎯 Para quién</div>
+      <div class="info-card-value">Amantes comida</div>
+    </div>
+  </div>
+
+  <div class="section-label">
+    <div class="section-label-line"></div>
+    <div class="section-label-text">La ruta</div>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="places-list">
+
+    <div class="place-item">
+      <div class="place-num">1</div>
+      <div class="place-name">Desayuno criollo en el Mercado</div>
+      <div class="place-type">Mercado local · Mañana</div>
+      <div class="place-desc">Visita el Mercado Municipal de Miraflores (Calle Schell) para un desayuno auténtico como lo hacen los limeños: api, tamales, pan con chicharrón o jugo de maracuyá recién exprimido. Experiencia 100% local a precios increíbles.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 8 min a pie</span>
+        <span class="ptag price">S/10–20</span>
+        <span class="ptag tip">Ir temprano 9am</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">2</div>
+      <div class="place-name">Pasaje San Ramón "Calle de las Pizzas"</div>
+      <div class="place-type">Café de media mañana</div>
+      <div class="place-desc">A media cuadra de tu hotel. Este pasaje peatonal tiene los mejores cafés de Miraflores. Perfecto para un café peruano de altura con un alfajor o una picarón. También hay opciones de brunch y jugos frescos. Muy instagram-friendly.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 2 min a pie</span>
+        <span class="ptag price">Café S/12–20</span>
+        <span class="ptag tip">A 1 cuadra del hotel</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">3</div>
+      <div class="place-name">Almuerzo: Ceviche auténtico</div>
+      <div class="place-type">Almuerzo estrella · 1pm</div>
+      <div class="place-desc">El Punto Azul (Calle San Martín 595, Miraflores) es uno de los cevicherías más queridas de Lima. Ceviche clásico, leche de tigre, pulpo al olivo y tiradito. Precios razonables, calidad insuperable. Abierto solo para almuerzo (12pm–5pm). Llega temprano porque se llena.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 10 min a pie</span>
+        <span class="ptag price">S/50–80 por persona</span>
+        <span class="ptag tip">Solo almuerzo · llegue a la 1pm</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">4</div>
+      <div class="place-name">Tour de picarones y postres</div>
+      <div class="place-type">Dulces típicos · Tarde</div>
+      <div class="place-desc">Después del almuerzo, camina por el Parque Kennedy donde venden los mejores postres limeños: mazamorra morada, arroz con leche, picarones con miel de chancaca, suspiro a la limeña y turrones. Una pequeña degustación de cada uno es la experiencia más auténtica de Lima.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 4 min del hotel</span>
+        <span class="ptag price">S/5–15 por postre</span>
+        <span class="ptag tip">Mejor de 3pm–5pm</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">5</div>
+      <div class="place-name">Pisco Sour + Cena criolla</div>
+      <div class="place-type">Cena · Noche</div>
+      <div class="place-desc">Termina el día con el coctel nacional del Perú: el Pisco Sour. Luego una cena de lomo saltado, ají de gallina o causa limeña. El restaurante Tanta (Av. Larco) de Gastón Acurio es ideal: buena comida peruana, buena vibra, precio razonable. Reserva por anticipado.</div>
+      <div class="place-tags">
+        <span class="ptag taxi">🚕 Uber 5 min / S/8</span>
+        <span class="ptag price">S/80–150 cena</span>
+        <span class="ptag tip">Reserva online previa</span>
+      </div>
+    </div>
+
+  </div>
+
+  <a class="maps-btn" href="https://maps.google.com/?q=Miraflores,Lima,Peru" target="_blank">
+    📍 Ver zona gastronómica en Maps
+  </a>
+
+  <div class="tips-box">
+    <div class="tips-title">🍽️ Tips Gastronómicos</div>
+    <div class="tip-row"><span class="tip-icon">🦐</span><span class="tip-text">El ceviche se come en el almuerzo, nunca en la noche — así lo hacen los limeños.</span></div>
+    <div class="tip-row"><span class="tip-icon">🍹</span><span class="tip-text">El Pisco Sour peruano (con clara de huevo) es diferente al chileno. Pide el peruano.</span></div>
+    <div class="tip-row"><span class="tip-icon">💧</span><span class="tip-text">Pide agua embotellada siempre, no del grifo.</span></div>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- TAB 4 — COSTA VERDE -->
+<!-- ════════════════════════════════════════ -->
+<div class="tab-panel" id="t4">
+  <div class="option-hero">
+    <div class="option-badge-top nature">Naturaleza & Aventura</div>
+    <div class="option-title">Costa Verde<br>& Playas</div>
+    <div class="option-subtitle">El litoral de Lima desde Miraflores hasta Chorrillos: acantilados, playas, deportes y el Pacífico a tus pies.</div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-card-label">💰 Costo total</div>
+      <div class="info-card-value gold">S/ 60–150</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">⏱️ Duración</div>
+      <div class="info-card-value">8am – 6pm</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">🚕 Desde hotel</div>
+      <div class="info-card-value">Uber ~10 min</div>
+    </div>
+    <div class="info-card">
+      <div class="info-card-label">🎯 Para quién</div>
+      <div class="info-card-value">Amantes del mar</div>
+    </div>
+  </div>
+
+  <div class="section-label">
+    <div class="section-label-line"></div>
+    <div class="section-label-text">Qué hacer</div>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="places-list">
+
+    <div class="place-item">
+      <div class="place-num">1</div>
+      <div class="place-name">Parapente en Miraflores</div>
+      <div class="place-type">Deporte aventura · Mañana</div>
+      <div class="place-desc">Uno de los planes más épicos de Lima: volar en parapente biplaza desde los acantilados del Malecón de Miraflores sobre el Océano Pacífico. El vuelo dura 10–15 minutos con vista total de la ciudad y el mar. Operadores en el Parque Raimondi del malecón, todos los días.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 18 min a pie del hotel</span>
+        <span class="ptag price">S/120–150 el vuelo</span>
+        <span class="ptag tip">Mejor 10am–12pm</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">2</div>
+      <div class="place-name">Playa Waikiki & Costa Verde</div>
+      <div class="place-type">Playa urbana</div>
+      <div class="place-desc">Baja desde el malecón por la Bajada Balta hasta la playa Waikiki, la más popular de Miraflores. En junio el agua está fría (~17°C) pero el paisaje es espectacular. Es posible ver surfistas locales. La Costa Verde es el boulevard costero con restaurantes de mariscos con vista al mar.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 20 min a pie</span>
+        <span class="ptag free">Playa gratis</span>
+        <span class="ptag tip">Agua fría en junio</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">3</div>
+      <div class="place-name">Almuerzo frente al mar</div>
+      <div class="place-type">Restaurante costero</div>
+      <div class="place-desc">La Costa Verde tiene varios restaurantes con vista directa al Pacífico. Rosa Náutica (en el muelle sobre el mar) es el más icónico pero caro. Alternativas más económicas en el boulevard costero donde los limeños comen mariscos frescos los fines de semana.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 En la Costa Verde</span>
+        <span class="ptag price">S/60–200 por persona</span>
+        <span class="ptag tip">Reservar Rosa Náutica</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">4</div>
+      <div class="place-name">Recorrido en bici: Malecón completo</div>
+      <div class="place-type">Paseo activo</div>
+      <div class="place-desc">Alquila una bicicleta en el malecón (~S/15/hora) y recorre los 8 km del litoral desde Miraflores hasta Barranco. El malecón tiene carril bici exclusivo. Pasas por todos los parques temáticos: Parque del Amor, Parque Salazar, Parque Grau y llegas al malecón bohemio de Barranco.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 Sale del Malecón</span>
+        <span class="ptag price">S/15–25 por hora</span>
+        <span class="ptag time">⏱ 2–3 horas</span>
+      </div>
+    </div>
+
+    <div class="place-item">
+      <div class="place-num">5</div>
+      <div class="place-name">Atardecer en el Malecón</div>
+      <div class="place-type">Panorámica · Tarde</div>
+      <div class="place-desc">El atardecer desde el Malecón de Miraflores es uno de los más bellos de Lima aunque en junio suele estar nublado. La garúa crea una atmósfera especial y difusa. Termina el día con un pisco sour en el mirador del Larcomar con vista al Pacífico. Perfecto broche de oro.</div>
+      <div class="place-tags">
+        <span class="ptag walk">🚶 Todo en el Malecón</span>
+        <span class="ptag price">Pisco sour S/25–35</span>
+        <span class="ptag tip">~6pm para el atardecer</span>
+      </div>
+    </div>
+
+  </div>
+
+  <a class="maps-btn" href="https://maps.google.com/?q=Malecon+Cisneros,Miraflores,Lima" target="_blank">
+    📍 Ver Malecón en Google Maps
+  </a>
+
+  <div class="tips-box">
+    <div class="tips-title">🌊 Tips Costa Verde</div>
+    <div class="tip-row"><span class="tip-icon">🌡️</span><span class="tip-text">En junio la garúa crea bruma costera. Lleva chaqueta impermeable ligera.</span></div>
+    <div class="tip-row"><span class="tip-icon">🪂</span><span class="tip-text">Para el parapente: reserva con los operadores en el Parque Raimondi en la mañana temprano. No necesitas reserva previa.</span></div>
+    <div class="tip-row"><span class="tip-icon">🏄</span><span class="tip-text">Si quieres surf, la playa La Herradura (Chorrillos) tiene mejores olas que Waikiki.</span></div>
+  </div>
+
+  <div class="bottom-space"></div>
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.currentTarget.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
